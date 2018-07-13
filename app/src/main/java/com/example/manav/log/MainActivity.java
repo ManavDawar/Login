@@ -2,7 +2,9 @@ package com.example.manav.log;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.R;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,20 +21,15 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    //ConstraintLayout myLayout;
-    //AnimationDrawable animationDrawable;
+    ConstraintLayout myLayout;
+    AnimationDrawable animationDrawable;
 
 
 
     private EditText Name;
     private EditText Password;
-    private TextView Info;
-    private Button Login;
-    private int counter = 5;
-    private TextView userRegistration;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
-    private TextView forgotPassword;
 
 
 
@@ -42,21 +38,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-      /*  myLayout = (ConstraintLayout)findViewById(R.id.myLayout);
+        myLayout = findViewById(R.id.myLayout);
         animationDrawable = (AnimationDrawable) myLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(3000);
-        animationDrawable.setExitFadeDuration(3000);
-        animationDrawable.start();*/
+        animationDrawable.setEnterFadeDuration(10000);
+        animationDrawable.setExitFadeDuration(10000);
+        animationDrawable.start();
 
 
-        Name = (EditText)findViewById(R.id.etName) ;
-        Password = (EditText)findViewById(R.id.etPassword);
-        Info = (TextView)findViewById(R.id.tvInfo) ;
-        Login = (Button)findViewById(R.id.btnLogin) ;
-        userRegistration = (TextView)findViewById(R.id.tvRegister);
-        forgotPassword = (TextView)findViewById(R.id.tvForgotPassword);
-
-        Info.setText("No of attempts remaining: 5");
+        Name = findViewById(R.id.etName) ;
+        Password = findViewById(R.id.etPassword);
+        Button Login = findViewById(R.id.btnLogin) ;
+        TextView userRegistration = findViewById(R.id.tvRegister);
+        TextView forgotPassword = findViewById(R.id.tvForgotPassword);
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
@@ -106,11 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     checkEmailVerification();
                 }else{progressDialog.dismiss();
                     Toast.makeText(MainActivity.this,"Login Failed",Toast.LENGTH_SHORT).show();
-                    counter--;
-                    Info.setText("No of attempts remaining: "+ counter);
-                    if(counter == 0){
-                        Login.setEnabled(false);
-                    }
+
                 }
 
             }

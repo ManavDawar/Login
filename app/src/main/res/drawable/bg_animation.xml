@@ -3,16 +3,16 @@
 
     <item
         android:drawable="@drawable/first_layer"
-        android:duration="2000"/>
+        android:duration="10000"/>
 
     <item
         android:drawable="@drawable/second_layer"
-        android:duration="2000"/>
+        android:duration="10000"/>
 
 
     <item
         android:drawable="@drawable/third_layer"
-        android:duration="2000"/>
+        android:duration="10000"/>
 
 
 </animation-list>

@@ -12,12 +12,10 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class PasswordActivity extends AppCompatActivity {
 
     private EditText passwordEmail;
-    private Button resetPassword;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -25,8 +23,8 @@ public class PasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
 
-        passwordEmail = (EditText)findViewById(R.id.etPasswordEmail);
-        resetPassword = (Button)findViewById(R.id.btnPasswordReset);
+        passwordEmail = findViewById(R.id.etPasswordEmail);
+        Button resetPassword = findViewById(R.id.btnPasswordReset);
         firebaseAuth = FirebaseAuth.getInstance();
 
 
